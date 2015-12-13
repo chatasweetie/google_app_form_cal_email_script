@@ -4,12 +4,11 @@ function myFormSubmit(e) {
 }
 
 
-
 //This creates the calenedar event 
 function createEvent_ (namedValues) {
   
-  var options = {description: namedValues.Description[0] +  "        link: " + namedValues.Link[0] + "        Limit of People: " + namedValues.Limit_of_people_who_can_attend[0] + "        As guest, we should bring: " + namedValues.What_should_invitees_bring[0] + "        Organized by: " + namedValues.Organizer_Name[0] + " Organizer's Phone Number: " + namedValues.Organizer_Phone_Number[0] + " Organizer's email: " + namedValues.Organizer_Email[0], location: namedValues.Location[0]};
-  var cEvent = CalendarApp.getCalendarsByName("Twelthbright")[0].createEvent(namedValues.Name, new Date(namedValues.Starts), new Date(namedValues.Ends), options)
+  var options = {description: namedValues.Description[0] +  "        link: " + namedValues.Link[0] + "        Limit of People: " + namedValues.Limit_of_people_who_can_attend[0] + "        As guest, we should bring: " + namedValues.What_should_invitees_bring[0] + "        Organized by: " + namedValues.Organizer_Name[0] + " Organizer's Phone Number: " + namedValues.Organizer_Phone_Number[0] + " Organizer's email: " + namedValues.Organizer_Email[0], location: namedValues.Location[0], guests:"jessica.dene.earley@gmail.com"};
+  var cEvent = CalendarApp.getCalendarsByName("Twelthbright")[0].createEvent(namedValues.Name[0], new Date(namedValues.Starts), new Date(namedValues.Ends), options)
 
 }
 
@@ -38,8 +37,7 @@ function EmailGoogleFormData(e) {
  
     if (MailApp.getRemainingDailyQuota() > 0) {
  
-      var email = "jessica.dene.earley@gmail.com, nmargolis89@gmail.com";
- //Hackbright-AcademyFall-2015@googlegroups.com
+      var email = "jessica.dene.earley@gmail.com"; //who you want to email to
 
       var subject = "New Twelthbright Event";
  
@@ -58,7 +56,7 @@ function EmailGoogleFormData(e) {
         if ((entry !== "") && (entry.replace(/,/g, "") !== ""))
           message += key + ' : ' + entry + "\n\n";
       }
-      message += "Go to the calendar: https://calendar.google.com/calendar/embed?src=pndn0fh23mivoo9093s3f890og%40group.calendar.google.com&ctz=America/Los_Angeles";
+      message += "Go to the calendar: https://calendar.google.com/calendar/embed?src=..."; //put your calendars http address
  
       MailApp.sendEmail(email, subject, message);
     }
